@@ -1,34 +1,31 @@
 import React, { Component } from "react";
-// import logo from './logo.svg';
-import logo from './typewriter1.svg';
 import './App.css';
-import SearchContainer from "./SearchContainer.js"
-import Quill from './Quill.js'
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import Navbar from './Navbar'
+import AppContainer from './AppContainer'
+import Login from './Login'
+import Register from './Register'
 
 class App extends Component {
 
   state = {
-    add:""
-  }
-
-  addToQuill = (phrase) => {
-    this.setState({add: phrase})
-  }
-
-  clearAdd = () => {
-    this.setState({add:""})
+   loggedIn: false,
+   currentUserID: null,
+   currentUser: {},
   }
 
   render (){
       return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-            <SearchContainer addToQuill={this.addToQuill}/>
-            <p>and a container that returns inspos inside bubbles in here</p>
-            <Quill clearAdd={this.clearAdd} add={this.state.add}/>
-        </header>
-      </div>
+
+        <Router>
+          <div>
+            <Navbar />
+            <Route exact path="/" component={AppContainer} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+          </div>
+        </Router>
+
       );
   }
 }

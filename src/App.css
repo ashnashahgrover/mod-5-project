@@ -20,3 +20,19 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Nav {
+  text-align: left;
+  background-color: #282c34;
+}
+
+.Nav-bar {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
