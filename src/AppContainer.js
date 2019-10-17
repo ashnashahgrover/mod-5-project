@@ -23,10 +23,10 @@ class AppContainer extends Component {
       return (
       <div className="App">
         <header className="App-header">
+          <div>{this.props.currentUser ? `${this.props.currentUser.name} logged in` : null}</div>
           <img src={logo} className="App-logo" alt="logo" />
             <SearchContainer addToQuill={this.addToQuill}/>
-            <p>and a container that returns inspos inside bubbles in here</p>
-            <Quill clearAdd={this.clearAdd} add={this.state.add}/>
+            <Quill currentUserID={this.props.currentUserID} clearAdd={this.clearAdd} add={this.state.add}/>
         </header>
       </div>
       );

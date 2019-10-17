@@ -27,7 +27,7 @@ class Navbar extends React.Component {
           }}
         >Home</NavLink>
 
-        <NavLink
+      <NavLink
           to="/login"
           exact
           style={link}

@@ -6,13 +6,16 @@ export default class Quill extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { text: '' } // You can also pass a Quill Delta here
+    this.state = { title: '', text: '' } // You can also pass a Quill Delta here
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(value) {
-    console.log(value)
     this.setState({ text: value })
+  }
+
+  handleTitleChange = (event) => {
+    this.setState({title: event.target.value })
   }
 
   ifAdd = () => {
@@ -22,14 +25,34 @@ export default class Quill extends Component {
     }
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const config ={
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify({
+        title: this.state.title,
+        content: this.state.text,
+        user_id: this.props.currentUserID
+      })
+    }
+    fetch("http://localhost:3000/poems",config)
+    .then(resp=>resp.json())
+    .then(console.log)
+  }
+
   render() {
     this.ifAdd()
     return (
-      <>
+      <form onSubmit={this.handleSubmit}>
+      Poem Title: <input onChange={this.handleTitleChange}/><br/><br/>
       <ReactQuill value={this.state.text}
                   onChange={this.handleChange} /><br/>
-      <input type="submit" value="submit poem" />
-      </>
+      <input type="submit" value="submit poem" /><br/><br/>
+      </form>
     )
   }
 

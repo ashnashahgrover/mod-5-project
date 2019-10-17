@@ -21,13 +21,15 @@ export default class SearchResults extends Component {
 
   render(){
     return (
+      <>
+      <h3>Results</h3>
       <div>
-      <h3>Inspos</h3>
       {this.renderSearchResults()}
-      </div>
+      </div><br/>
+      </>
     )
   }
 
 }
 
-//can style out the buttons. 
+//can style out the buttons.
