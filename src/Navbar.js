@@ -27,7 +27,21 @@ class Navbar extends React.Component {
           }}
         >Home</NavLink>
 
-      <NavLink
+        <NavLink
+          to="/poems"
+          /* set exact so it knows to only set activeStyle when route is deeply equal to link */
+          exact
+          /* add styling to Navlink */
+          style={link}
+          /* add prop for activeStyle */
+          activeStyle={{
+            background: 'darkblue'
+          }}
+        >My Poems</NavLink>
+
+          {!this.props.loggedIn ?
+            <>
+          <NavLink
           to="/login"
           exact
           style={link}
@@ -44,6 +58,10 @@ class Navbar extends React.Component {
               background: 'darkblue'
             }}
             >Register</NavLink>
+            </>
+            :
+            null
+          }
 
       </div>
     )

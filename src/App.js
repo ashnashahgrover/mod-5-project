@@ -77,7 +77,7 @@ class App extends Component {
 
         <Router>
           <div>
-            <Navbar />
+            <Navbar loggedIn={this.state.loggedIn}/>
             <Route exact path="/" render={ () => this.state.loggedIn ? <AppContainer currentUserID={this.state.currentUserID} currentUser={this.state.currentUser}/> : <Redirect to='/login' /> } />
             <Route exact path="/login" render={ () => this.state.loggedIn ? <Redirect to='/' /> : <Login loginUser={this.loginUser} /> } />
             <Route exact path="/register" render={ () => this.state.loggedIn ? <Redirect to='/' /> : <Register registerUser={this.registerUser} /> } />

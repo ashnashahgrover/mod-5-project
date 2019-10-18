@@ -36,3 +36,12 @@
   font-size: calc(1px + 2vmin);
   color: white;
 }
+
+
+#left {
+  position: absolute;
+  left: 2em;
+  top: 40%
+}
+
+/* position, abslute, left: ~em, top: ~40% */
