@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import leftArrow from './left-arrow.svg'
-let demoButtons
-
+import rightArrow from './right-arrow.svg'
+import PoemCard from './PoemCard'
 export default class PoemsContainer extends Component {
 
   state = {
@@ -19,50 +19,22 @@ export default class PoemsContainer extends Component {
     return this.state.poems.map(e=><li>{e.content}</li>)
   }
 
-      start () {
-
-      // Add event "click" to "demo buttons"
-      demoButtons = document.querySelectorAll ('.js-modify');
-      for (var i = 0; i < demoButtons.length; i++) {
-        demoButtons[i].addEventListener ('click', this.toggleEffect);
-      }
-
-      // Add event "click" to "save buttons"
-      var saveButtons = document.querySelectorAll ('.js-save');
-      for (var i = 0; i < saveButtons.length; i++) {
-        saveButtons[i].addEventListener ('click', this.toggleActive);
-      }
-
-      }
-
-    // Toggle "effect" classes
-    toggleEffect () {
-      var target = document.querySelector (this.dataset.target);
-          target.dataset.effect = this.dataset.effect;
-
-      for (var i= 0; i < demoButtons.length; i++) {
-        demoButtons[i].classList.remove ('active');
-      }
-      debugger
-      this.toggleActive.call(this);
+  moveForward = () => {
+    let current = this.state.counter
+    if (current != this.state.poems.length - 1){
+      this.setState({counter: current+1})
     }
-
-    // Toggle "active" class
-    toggleActive () {
-      this.classList.toggle ('active');
-    }
-
-    // Invoke "start ()" function
+    else {this.setState({counter: 0})}
+  }
 
   render(){
-    window.addEventListener('load', this.start);
     return (
       <div className="App">
       <header className="App-header">
-      <h3>Your Poems:</h3>
       {/*{this.renderPoemTitles()}*/}
-      <img src={leftArrow} className="App-logo" alt="logo" id="left" />
-
+      <img  src={leftArrow} className="App-logo arrow" alt="logo" id="left" />
+      <img src={rightArrow} onClick={this.moveForward} className="App-logo arrow" alt="logo" id="right" />
+      <PoemCard poem={this.state.poems[this.state.counter]}/>
       </header>
       </div>
     )
