@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import leftArrow from './left-arrow.svg'
 import rightArrow from './right-arrow.svg'
 import PoemCard from './PoemCard'
+import Analysis from './Analysis'
+import { BrowserRouter as Router, Route, NavLink, Redirect} from 'react-router-dom';
+
 export default class PoemsContainer extends Component {
 
   state = {
@@ -43,6 +46,7 @@ export default class PoemsContainer extends Component {
       <img  src={leftArrow} onClick={this.moveBackward} className="App-logo arrow" alt="logo" id="left" />
       <img src={rightArrow} onClick={this.moveForward} className="App-logo arrow" alt="logo" id="right" />
       <PoemCard poem={this.state.poems[this.state.counter]}/>
+      <Analysis poem={this.state.poems[this.state.counter]}/>
       </header>
       </div>
     )

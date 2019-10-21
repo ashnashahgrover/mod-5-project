@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import React, { Component } from "react";
-import leftArrow from './left-arrow.svg'
-var demoButtons
+import leftArrow from './left-arrow.svg';
+var demoButtons;
+
 
 export default class PoemsContainer extends Component {
 
@@ -21,7 +23,7 @@ export default class PoemsContainer extends Component {
         <nav className="menu">
           <ul className="menu__list">
             <li className="menu__item  js-modify  active" data-target=".card" data-effect="zoom">Poem</li>
-            <li className="menu__item  js-modify" data-target=".card" data-effect="blur" >Analysis</li>
+            <li className="menu__item  js-modify" data-target=".card" data-effect="blur" ><Link style={{ textDecoration: 'none' }} to="/analysis">Analysis</Link></li>
           </ul>
         </nav>
 
