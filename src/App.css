@@ -37,6 +37,10 @@
   color: white;
 }
 
+.datamuse {
+  border: 1px solid blue;
+}
+
 
 #left {
   position: absolute;
@@ -197,7 +201,7 @@ body {
   height: 35px;
   background: transparent;
   border: 0;
-  opacity: 0;
+  opacity: 1;
   border-radius: 3px;
   -webkit-transition: all var(--speed) ease;
   transition: all var(--speed) ease;
@@ -209,7 +213,7 @@ body {
 }
 
 .card:hover .card__save {
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .card__save i {
@@ -347,13 +351,13 @@ body {
   font-weight: var(--fontLight);
   text-align: center;
   letter-spacing: 0.35rem;
-  color: rgba(100, 130, 200, 0.45);
+  color: white;
   -webkit-transition: all var(--speed) ease;
   transition: all var(--speed) ease;
 }
 
 .card:hover .card__job {
-  color: rgba(100, 130, 200, 1);
+  color: white;
 }
 
 .card__bio {
@@ -366,7 +370,7 @@ body {
   font-weight: var(--fontLight);
   /*text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.35);*/
   color: rgba(255, 255, 255, 0.65);
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: all var(--speed) ease;
   transition: all var(--speed) ease;
 }
@@ -385,7 +389,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "date category";
   padding: 10px 20px;
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: all var(--speed) ease;
   transition: all var(--speed) ease;
 }

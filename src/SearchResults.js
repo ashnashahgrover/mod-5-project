@@ -6,7 +6,7 @@ export default class SearchResults extends Component {
     if (this.props.searchResults != undefined) {
     return this.props.searchResults.map(result =>
       {
-      return (<button onClick={this.sendUp}>{result}</button>)
+      return (<button className="datamuse" onClick={this.sendUp}>{result}</button>)
       }
     )
     }
@@ -14,8 +14,6 @@ export default class SearchResults extends Component {
 
   sendUp = (event) =>{
     event.preventDefault()
-    console.log("button value", event.target.innerText)
-    console.log("Adding to Quill")
     this.props.addToQuill(event.target.innerText)
   }
 

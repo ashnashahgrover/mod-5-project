@@ -23,27 +23,8 @@ export default class SearchContainer extends Component {
 
     handleSubmit = (event) => {
        event.preventDefault()
-       // if (event.target.id==="synonym"){
-       //     fetch(`https://wordsapiv1.p.mashape.com/words/${this.state.search}/synonyms`,  {
-       //      "method": "GET",
-       //      "headers": {
-       //          "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-       //          "x-rapidapi-key": "44b2196698mshed0a42f8c708b87p101c5bjsn75eb94ca3f82"
-       //          //does this need to be hidden in a .env file?
-       //      }
-       //  })
-       //     .then(resp=>{
-       //       console.log(resp.status)
-       //       if (resp.status === 200){return resp.json()}
-       //       else {return "Word not Found"}
-       //     })
-       //     .then(data => {
-       //       this.setState({results: data.synonyms})
-       //     })
-       //     .catch(error => console.log(error))
-       // }
+
        if (event.target.classList.contains("datamuse")){
-         console.log("hello")
          fetch(`https://api.datamuse.com/words?${event.target.id}=${this.state.search}`)
           .then(resp=>resp.json())
           .then(data=> {
@@ -78,4 +59,41 @@ export default class SearchContainer extends Component {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 //https://www.datamuse.com/api/
+
+
+
+
+
+
+// if (event.target.id==="synonym"){
+//     fetch(`https://wordsapiv1.p.mashape.com/words/${this.state.search}/synonyms`,  {
+//      "method": "GET",
+//      "headers": {
+//          "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+//          "x-rapidapi-key": "44b2196698mshed0a42f8c708b87p101c5bjsn75eb94ca3f82"
+//          //does this need to be hidden in a .env file?
+//      }
+//  })
+//     .then(resp=>{
+//       console.log(resp.status)
+//       if (resp.status === 200){return resp.json()}
+//       else {return "Word not Found"}
+//     })
+//     .then(data => {
+//       this.setState({results: data.synonyms})
+//     })
+//     .catch(error => console.log(error))
+// }

@@ -6,7 +6,7 @@ export default class Quill extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { title: '', text: '' } // You can also pass a Quill Delta here
+    this.state = { title: '', text: '', titleOrPoem: null } // You can also pass a Quill Delta here
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -19,10 +19,21 @@ export default class Quill extends Component {
   }
 
   ifAdd = () => {
+
     if (this.props.add.length > 0){
+
+      if (this.state.titleOrPoem==="title"){
+        let newString=this.state.title + this.props.add
+        this.setState({title: newString, titleOrPoem:null}, ()=>this.props.clearAdd())
+      }
+
+      else {
       let newString=this.state.text + this.props.add
       this.setState({text:newString}, ()=>this.props.clearAdd())
+      }
+
     }
+
   }
 
   handleSubmit = (event) => {
@@ -41,16 +52,22 @@ export default class Quill extends Component {
     }
     fetch("http://localhost:3000/poems",config)
     .then(resp=>resp.json())
-    .then(console.log)
+    .then(data=>this.setState({title:"", text:""}))
+  }
+
+  whichBox = (event) => {
+    this.setState({titleOrPoem: event.target.classList[0]})
   }
 
   render() {
     this.ifAdd()
     return (
       <form onSubmit={this.handleSubmit}>
-      Poem Title: <input onChange={this.handleTitleChange}/><br/><br/>
+      Poem Title: <input className="title" value={this.state.title} onClick={this.whichBox} onChange={this.handleTitleChange}/><br/><br/>
+      <div onClick={this.whichBox}>
       <ReactQuill value={this.state.text}
-                  onChange={this.handleChange} /><br/>
+                  onChange={this.handleChange} onClick={this.whichBox} className="poem" /><br/>
+      </div>
       <input type="submit" value="submit poem" /><br/><br/>
       </form>
     )

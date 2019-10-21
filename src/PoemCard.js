@@ -4,40 +4,46 @@ var demoButtons
 
 export default class PoemsContainer extends Component {
 
+  stringToHTML = () => {
+    var string = this.props.poem.content
+    var temp = document.createElement("div")
+    temp.innerHTML = string
+    return <div dangerouslySetInnerHTML={{ __html: this.props.poem.content }} />
+  }
+
   render(){
     return (
       <div className="App">
       <header className="App-header">
 
-      <section class="wrapper">
+      <section className="wrapper">
 
-        <nav class="menu">
-          <ul class="menu__list">
-            <li class="menu__item  js-modify  active" data-target=".card" data-effect="zoom">Title</li>
-            <li class="menu__item  js-modify" data-target=".card" data-effect="blur" >Content</li>
+        <nav className="menu">
+          <ul className="menu__list">
+            <li className="menu__item  js-modify  active" data-target=".card" data-effect="zoom">Poem</li>
+            <li className="menu__item  js-modify" data-target=".card" data-effect="blur" >Analysis</li>
           </ul>
         </nav>
 
-        <div class="card" data-effect="zoom">
-          <button class="card__save  js-save" type="button">
-            <i class="fa  fa-bookmark"></i>
+        <div className="card" data-effect="zoom">
+          <button className="card__save  js-save" type="button">
+            <i className="fa  fa-bookmark"></i>
            </button>
-          <figure  class="card__image">
+          <figure  className="card__image">
             <img src="https://c1.staticflickr.com/4/3935/32253842574_d3d449ab86_c.jpg" alt="Short description"/>
           </figure>
-          <div class="card__header">
-            <figure class="card__profile">
+          {/* <div className="card__header">
+            <figure className="card__profile">
               <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Neil_Armstrong.jpg" alt="Short description"/>
             </figure>
+          </div> */}
+          <div className="card__body">
+            <h1 className="card__footer">{this.props.poem ? this.props.poem.title : null}</h1><br/>
+            <p className="card__bio">{this.props.poem ? this.stringToHTML() : null}</p>
           </div>
-          <div class="card__body">
-            <h3 class="card__name">{this.props.poem ? this.props.poem.title : null}</h3>
-            <p class="card__job">astronaut & engineer</p>
-            <p class="card__bio"> American astronaut, engineer, and the first person to walk on the Moon.</p>
-          </div>
-          <div class="card__footer">
-            <p class="card__date">Feb 10 2018</p>
-            <p class=""></p>
+          <div className="card__footer">
+            <p className="card__date">Written at: {this.props.poem ? new Date(Date.parse(this.props.poem.created_at)*1e3).toLocaleTimeString("en-US", {timeZone: "America/New_York"})  : null}</p>
+            <p className=""></p>
           </div>
         </div>
 
