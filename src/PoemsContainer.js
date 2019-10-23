@@ -9,7 +9,13 @@ export default class PoemsContainer extends Component {
 
   state = {
     poems: [],
-    counter: 0
+    counter: 0,
+    which: "poem"
+  }
+
+  changeWhich = (event) => {
+    if (event.target.id==="poem"){this.setState({which:"poem"})}
+    else {this.setState({which:"analysis"})}
   }
 
   componentDidMount(){
@@ -45,8 +51,11 @@ export default class PoemsContainer extends Component {
       {/*{this.renderPoemTitles()}*/}
       <img  src={leftArrow} onClick={this.moveBackward} className="App-logo arrow" alt="logo" id="left" />
       <img src={rightArrow} onClick={this.moveForward} className="App-logo arrow" alt="logo" id="right" />
-      <PoemCard poem={this.state.poems[this.state.counter]}/>
-      <Analysis poem={this.state.poems[this.state.counter]}/>
+      {this.state.which==="poem" ?
+      <PoemCard change={this.changeWhich} poem={this.state.poems[this.state.counter]}/>
+      :
+      <Analysis change={this.changeWhich} poem={this.state.poems[this.state.counter]}/>
+      }
       </header>
       </div>
     )

@@ -4,7 +4,7 @@ import leftArrow from './left-arrow.svg';
 var demoButtons;
 
 
-export default class PoemsContainer extends Component {
+export default class PoemsCard extends Component {
 
   stringToHTML = () => {
     var string = this.props.poem.content
@@ -22,8 +22,8 @@ export default class PoemsContainer extends Component {
 
         <nav className="menu">
           <ul className="menu__list">
-            <li className="menu__item  js-modify  active" data-target=".card" data-effect="zoom">Poem</li>
-            <li className="menu__item  js-modify" data-target=".card" data-effect="blur" ><Link style={{ textDecoration: 'none' }} to="/analysis">Analysis</Link></li>
+            <li className="menu__item  js-modify" data-target=".card"  id="poem" onClick={this.props.change}>Poem</li>
+            <li className="menu__item  js-modify " data-target=".card"  id="analysis" onClick={this.props.change}>Analysis</li>
           </ul>
         </nav>
 
