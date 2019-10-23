@@ -5,7 +5,24 @@ export default class Analysis extends Component {
   parseJSON = () => {
     if (this.props.poem.nlu){
     let nlu = JSON.parse(this.props.poem.nlu)
-    return <h1>{nlu.sentiment.document.label}</h1>}
+    return (
+      <div className="card__body">
+
+      <h1>Sentiment:</h1>
+      <li>{nlu.sentiment.document.label}, Score: {nlu.sentiment.document.score}</li>
+      <br/>
+      <div>
+      <h1>Emotion:</h1>
+      <li>Anger:{nlu.emotion.document.emotion.anger}</li>
+      <li>Disgust:{nlu.emotion.document.emotion.disgust}</li>
+      <li>Fear:{nlu.emotion.document.emotion.fear}</li>
+      <li>Joy:{nlu.emotion.document.emotion.joy}</li>
+      <li>Sadness:{nlu.emotion.document.emotion.sadness}</li>
+
+      </div>
+
+      </div>
+    )}
     else {return null}
   }
 
@@ -38,7 +55,7 @@ export default class Analysis extends Component {
           <div className="card__body">
             <h1 className="card__footer">{this.props.poem ? this.props.poem.title : null}</h1><br/>
             <p className="card__bio">{this.props.poem ? this.parseJSON() : null}</p>
-          </div>
+          </div><br/><br/><br/><br/>
           <div className="card__footer">
             <p className="card__date">Written at: {this.props.poem ? new Date(Date.parse(this.props.poem.created_at)*1e3).toLocaleTimeString("en-US", {timeZone: "America/New_York"})  : null}</p>
             <p className=""></p>

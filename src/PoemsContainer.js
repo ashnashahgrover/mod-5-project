@@ -10,7 +10,7 @@ export default class PoemsContainer extends Component {
   state = {
     poems: [],
     counter: 0,
-    which: "poem"
+    which: "analysis"
   }
 
   changeWhich = (event) => {
